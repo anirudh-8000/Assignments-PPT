@@ -1,0 +1,332 @@
+Assignment-1 (PPT)
+
+Solution=1st
+
+import java.util.ArrayList;
+import java.util.Scanner;
+public class assignment {
+	public static ArrayList solve(int []arr,int target,int n) {
+		ArrayList al=new ArrayList();
+		for(int i=0;i<n-1;i++) {
+			for(int j=i+1;j<n;j++) {
+				if(arr[i]+arr[j]==target) {
+					al.add(i);
+					al.add(j);
+					return al;
+				}
+			}
+		}
+		return al;
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the size of an array:");
+		int n=sc.nextInt();
+		System.out.println("Enter the Array Element:");
+		int [] arr=new int[n];
+		for(int i=0;i<n;i++) {
+			arr[i]=sc.nextInt();
+		}
+		System.out.println("Enter the target Element:");
+		int target=sc.nextInt();
+		System.out.println("Indexes is:"+solve(arr,target,n));	
+	}
+}
+
+
+Solution-2
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class assign2 {
+	public static int solve(int []arr,int target,int n) {
+		ArrayList al=new ArrayList();
+		for(int i=0;i<=n-1;i++) {
+			 if(arr[i]!=target) {
+				 al.add(arr[i]);
+			}
+		}
+		int length=al.size();
+		for(int i=0;i<n;i++) {
+			if(i<length)
+			    arr[i]=(int) al.get(i);
+			else
+				arr[i]='_';
+		}
+		return length;
+	}
+	public static void main(String[] args) {
+		System.out.println("Enter the size of array:");
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		System.out.println("Enter the Array Element:");
+		int [] arr=new int[n];
+		for(int i=0;i<n;i++) {
+			arr[i]=sc.nextInt();
+		}
+		System.out.println("Enter the target Element:");
+		int target=sc.nextInt();
+		System.out.println("No. of Element is:"+solve(arr,target,n));
+		}
+}
+
+
+Solution-3
+
+package practice;
+
+import java.util.Scanner;
+
+public class assign3 {
+	public static int solve(int []arr,int n,int target) {
+		int first=0,last=n-1;
+		int ans=-1;
+		while(first<=last) {
+			int mid=(first+last)/2;
+			if(arr[mid]==target) {
+				ans=mid;
+				return ans;
+			}
+			else if(arr[mid]<target) {
+				first=mid+1;
+				ans=mid;
+			}
+			else {
+				last=mid-1;
+				ans=mid;
+			}
+		}
+		return ans;
+    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the size of an array:");
+		int n=sc.nextInt();
+		System.out.println("Enter the Array Element:");
+		int [] arr=new int[n];
+		for(int i=0;i<n;i++) {
+			arr[i]=sc.nextInt();
+		}
+		System.out.println("Enter the target Element:");
+		int target=sc.nextInt();
+		System.out.println("Index is:"+solve(arr,n,target));
+	}
+}
+
+
+Solution-4
+
+package practice;
+
+import java.util.Scanner;
+
+public class assign4 {
+	public static int[] increment(int []digits,int n) {
+		 int carryover = 1;
+
+	        for (int i = digits.length - 1; i >= 0; i--) {
+	            int digit = digits[i];
+	            int newDigit = (digit + carryover) % 10;
+	            carryover = (digit + carryover) / 10;
+	            digits[i] = newDigit;
+
+	            if (carryover == 0) {
+	                break;
+	            }
+	        }
+
+	        if (carryover > 0) {
+	            int[] result = new int[digits.length + 1];
+	            result[0] = carryover;
+	            System.arraycopy(digits, 0, result, 1, digits.length);
+	            return result;	
+	        }
+			return digits;
+	}
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the size of an array:");
+		int n=sc.nextInt();
+		System.out.println("Enter the Array Element:");
+		int [] arr=new int[n];
+		for(int i=0;i<n;i++) {
+			arr[i]=sc.nextInt();
+		}
+		int[] ans=increment(arr,n);
+		
+		for(int i=0;i<n;i++) {
+			System.out.print(ans[i]);
+		}
+		
+    }
+}
+
+Solution-5
+
+package practice;
+import java.util.*;
+
+public class assign5 {
+    public static void sorted(int []arr1,int []arr2,int m,int n) {
+        System.out.println("Function call");
+    	int i=m-1,j=n-1,k=m+n-1;
+    	while(i>=0 && j>=0) {
+    		if(arr1[i]<=arr2[j] ) {
+    			arr1[k]=arr2[j];
+    			k--;
+    			j--;
+    		}
+    		else {
+    			arr1[k]=arr1[i];
+    			i--;
+    			k--;
+    		}
+    	}
+    	while(j>=0) {
+    		arr1[k]=arr2[j];
+    		j--;
+    		k--;
+    	}
+    	 
+    }
+ 
+	public static void main(String[] args) {
+		System.out.println("Enter the number of element in array 1 :");
+		Scanner sc=new Scanner(System.in);
+		int m=sc.nextInt();
+		System.out.println("Enter the number of element in array 2 :");
+		int n=sc.nextInt();
+		System.out.println("Enter the element of array 1:");
+		int []arr1=new int[m+n];
+		int []arr2=new int[n];
+		for(int i=0;i<m;i++) {
+			arr1[i]=sc.nextInt();
+		}
+		for(int i=m;i<m+n;i++) {
+			arr1[i]=0;
+		}
+		System.out.println("Enter the element of array 2:");
+		for(int i=0;i<n;i++) {
+			arr2[i]=sc.nextInt();
+		}
+        sorted(arr1,arr2,m,n);
+        System.out.println("After Merging:");
+        for(int i=0;i<(m+n);i++) {
+        	System.out.print(arr1[i]+"  ");
+        }
+	}
+
+}
+
+
+Solution-6
+
+package practice;
+
+import java.util.Arrays;
+
+public class Que6 {
+	public static boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+	public static void main(String[] args) {
+		int []arr= {2,1,3,4};
+		System.out.println(containsDuplicate(arr));
+
+	}
+
+}
+
+Solution-7
+
+package practice;
+
+import java.util.Scanner;
+
+public class que7 {
+	public static void solve(int[] arr) {
+		int i=0,j=0;
+		while(j<(arr.length-1)) {
+			if(arr[j]==0) {
+				j++;
+			}
+			else {
+				int temp=arr[j];
+				arr[j]=arr[i];
+				arr[i]=temp;
+				i++;
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the size of an array:");
+		int n=sc.nextInt();
+		System.out.println("Enter the Array Element:");
+		int [] arr=new int[n];
+		for(int i=0;i<n;i++) {
+			arr[i]=sc.nextInt();
+		}
+        solve(arr);
+        for(int i=0;i<n;i++) {
+        	System.out.print(arr[i]+"  ");
+        }
+
+	}
+
+}
+
+
+Solution-8
+
+package practice;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class que8 {
+	public static ArrayList solve(int[] arr) {
+		ArrayList al=new ArrayList();
+		int sn=0,s2n=0,s=0,s2=0;
+		for(int i=0;i<arr.length;i++) {
+			sn+=(i+1);
+			s2n+=((i+1)*(i+1));
+			s+=arr[i];
+			s2+=(arr[i]*arr[i]);
+		}
+		int val1=sn-s;
+		int val2=s2n-s2;
+		val2=val2/val1;
+		int x=(val1+val2)/2;
+		al.add(x);
+		int y =x-val1;
+		al.add(y);
+		return al;
+	}
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the size of an array:");
+		int n=sc.nextInt();
+		System.out.println("Enter the Array Element:");
+		int [] arr=new int[n];
+		for(int i=0;i<n;i++) {
+			arr[i]=sc.nextInt();
+		}
+		System.out.println(solve(arr));
+
+	}
+
+}
