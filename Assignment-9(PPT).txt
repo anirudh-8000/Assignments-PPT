@@ -1,0 +1,96 @@
+Assignment-9(PPT)
+
+Q1. What is the difference between a Compiler and an Interpreter?
+
+A compiler translates the entire source code into machine code or bytecode before execution, while an interpreter translates and executes the code line by line or statement by statement.
+Compiled programs can be directly executed by the computer's processor, while interpreted programs require an interpreter to execute the code.
+Compiled programs tend to be faster since they undergo optimization during compilation, while interpreted programs are generally slower since they involve interpretation at runtime.
+Interpreters are more portable since they can directly interpret the source code on different platforms without the need for platform-specific compilation.
+
+
+Q2. What is the difference between JDK, JRE, and JVM?
+
+JDK (Java Development Kit) is used for Java application development and includes tools like the Java compiler and debugger.
+JRE (Java Runtime Environment) is used for running Java applications and includes the JVM and core libraries.
+JVM (Java Virtual Machine) is the virtual machine responsible for executing Java bytecode.
+
+
+Q3. How many types of memory areas are allocated by JVM?
+The JVM allocates the following memory areas:
+
+Heap Memory (Young Generation and Old Generation)
+Method Area
+JVM Stacks
+Native Method Stacks
+PC Registers
+Runtime Constant Pool
+Direct Memory
+
+
+Q4. What is JIT compiler?
+
+JIT (Just-In-Time) compiler is a component of the JVM that dynamically compiles bytecode into machine code during runtime.
+It analyzes and identifies frequently executed code segments, called hotspots, and optimizes them for better performance.
+The JIT compilation process allows the JVM to combine the advantages of both interpretation (quick startup) and compilation (runtime performance optimization).
+
+
+Q5. What are the various access specifiers in Java?
+In Java, there are four access specifiers:
+
+public: Allows unrestricted access from any other class or package.
+private: Restricts access to within the same class.
+protected: Allows access within the same class, subclasses, and the same package.
+Default (no specifier): Allows access within the same package only.
+
+
+Q6. What is a compiler in Java?
+
+In Java, a compiler is a software tool that translates the source code written in a high-level programming language (like Java) into a lower-level representation, such as bytecode or machine code.
+The Java compiler (javac) is part of the Java Development Kit (JDK) and translates Java source code into bytecode that can be executed by the JVM.
+
+
+Q7. Explain the types of variables in Java.
+In Java, variables can be categorized into three types:
+
+Local Variables: Defined within a method, constructor, or block. They have a limited scope and are accessible only within the enclosing block.
+Instance Variables: Also known as member variables, they are defined within a class but outside any method. Each instance of the class has its own copy of instance variables.
+Static Variables: Also known as class variables, they are declared with the static keyword. They belong to the class itself rather than individual instances. All instances of the class share the same static variable.
+
+
+Q8. What are the Datatypes in Java?
+Java provides several built-in datatypes:
+
+Primitive Types: byte, short, int, long, float, double, char, boolean.
+Reference Types: class, interface, array, and various predefined classes like String.
+
+
+Q9. What are the identifiers in Java?
+In Java, identifiers are names used to identify classes, variables, methods, and other program elements. Here are the rules for Java identifiers:
+
+An identifier can consist of letters (A-Z or a-z), digits (0-9), underscores (_), or dollar signs ($).
+The first character of an identifier must be a letter, an underscore, or a dollar sign. It cannot be a digit.
+Java is case-sensitive, so uppercase and lowercase letters are considered distinct.
+Identifiers should not be a keyword or reserved word in Java.
+Identifiers should be meaningful and follow a naming convention, such as using camel case (e.g., myVariable) for variables and lowercase letters for classes and methods.
+
+
+Q10. Explain the architecture of JVM
+The architecture of the JVM (Java Virtual Machine) consists of three main components:
+
+Class Loader Subsystem: This subsystem is responsible for loading classes into the JVM at runtime. It performs tasks like locating and loading class files, verifying their bytecode, and preparing them for execution. The class loader subsystem includes three class loaders: the Bootstrap class loader, the Extension class loader, and the Application class loader.
+
+Runtime Data Area: The runtime data area is the memory space used by the JVM during program execution. It is divided into several memory areas, including:
+
+Method Area: It stores class-level data, including the runtime constant pool, field and method data, and bytecode instructions.
+Heap: It is the memory area shared by all threads and is used for allocating objects.
+JVM Stacks: Each thread has its own JVM stack, which stores method invocations and local variables.
+Native Method Stacks: It stores data specific to native (non-Java) methods.
+PC Registers: Each thread has its own PC registers to keep track of the current execution point.
+Runtime Constant Pool: It holds symbolic references to classes, methods, fields, and other constants used by the code.
+Direct Memory: It is used for memory allocated outside of the JVM heap.
+Execution Engine: The execution engine is responsible for executing the bytecode instructions. It includes the following components:
+
+Just-In-Time (JIT) Compiler: It dynamically compiles bytecode into machine code for better performance.
+Interpreter: It interprets bytecode and executes the instructions line by line.
+Runtime System: It provides essential runtime services, such as garbage collection, exception handling, and thread synchronization.
+These components work together to execute Java bytecode within the JVM, providing platform independence and memory management for Java applications.
