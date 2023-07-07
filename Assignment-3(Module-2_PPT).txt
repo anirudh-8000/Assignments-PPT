@@ -1,0 +1,231 @@
+Assignment-3(Module-2_PPT)
+
+Q1. Write a simple Banking System program by using OOPs concept where you can get account holder name, balance, etc.
+
+class BankAccount {
+    private String accountHolderName;
+    private double balance;
+
+    public BankAccount(String accountHolderName, double balance) {
+        this.accountHolderName = accountHolderName;
+        this.balance = balance;
+    }
+
+    public String getAccountHolderName() {
+        return accountHolderName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient funds");
+        }
+    }
+}
+
+public class BankingSystem {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("John Doe", 1000.0);
+        System.out.println("Account Holder Name: " + account.getAccountHolderName());
+        System.out.println("Balance: " + account.getBalance());
+        account.deposit(500.0);
+        System.out.println("Balance after deposit: " + account.getBalance());
+        account.withdraw(200.0);
+        System.out.println("Balance after withdrawal: " + account.getBalance());
+    }
+}
+Q2. Write a Program where you inherit a method from a parent class and show method overriding concept.
+
+class ParentClass {
+    public void display() {
+        System.out.println("This is the parent class.");
+    }
+}
+
+class ChildClass extends ParentClass {
+    @Override
+    public void display() {
+        System.out.println("This is the child class.");
+    }
+}
+
+public class MethodOverridingExample {
+    public static void main(String[] args) {
+        ParentClass parent = new ParentClass();
+        parent.display();
+
+        ChildClass child = new ChildClass();
+        child.display();
+    }
+}
+Q3. Write a program to show runtime polymorphism in Java.
+
+class Animal {
+    public void sound() {
+        System.out.println("Animal is making a sound");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Meow");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Woof");
+    }
+}
+
+public class RuntimePolymorphismExample {
+    public static void main(String[] args) {
+        Animal animal1 = new Cat();
+        Animal animal2 = new Dog();
+
+        animal1.sound();  // Output: Meow
+        animal2.sound();  // Output: Woof
+    }
+}
+Q4. Write a program to show compile-time polymorphism in Java.
+
+public class CompileTimePolymorphismExample {
+    public void display() {
+        System.out.println("Method without parameters");
+    }
+
+    public void display(String message) {
+        System.out.println("Method with a string parameter: " + message);
+    }
+
+    public void display(int number) {
+        System.out.println("Method with an integer parameter: " + number);
+    }
+
+    public static void main(String[] args) {
+        CompileTimePolymorphismExample example = new CompileTimePolymorphismExample();
+        example.display();              // Output: Method without parameters
+        example.display("Hello");       // Output: Method with a string parameter: Hello
+        example.display(100);           // Output: Method with an integer parameter: 100
+    }
+}
+Q5. Achieve loose coupling in Java by using OOPs concepts.
+
+In Java, you can achieve loose coupling by using interfaces and dependency injection. Here's an example:
+
+// Interface for a payment processor
+interface PaymentProcessor {
+    void processPayment(double amount);
+}
+
+// Concrete implementation of the payment processor
+class CreditCardPaymentProcessor implements PaymentProcessor {
+    public void processPayment(double amount) {
+        System.out.println("Processing credit card payment: $" + amount);
+        // Logic for processing credit card payment
+    }
+}
+
+// Class that depends on the payment processor interface
+class ShoppingCart {
+    private PaymentProcessor paymentProcessor;
+
+    public ShoppingCart(PaymentProcessor paymentProcessor) {
+        this.paymentProcessor = paymentProcessor;
+    }
+
+    public void checkout(double totalAmount) {
+        // Perform checkout operations
+        paymentProcessor.processPayment(totalAmount);
+        // Other checkout operations
+    }
+}
+
+public class LooseCouplingExample {
+    public static void main(String[] args) {
+        PaymentProcessor paymentProcessor = new CreditCardPaymentProcessor();
+        ShoppingCart cart = new ShoppingCart(paymentProcessor);
+        cart.checkout(100.0);
+    }
+}
+
+Q6. The benefit of encapsulation in Java is that it provides data hiding and abstraction. It helps in keeping the internal implementation details of a class hidden from the outside world. By encapsulating data within a class, you can control access to it through getter and setter methods, ensuring that the data is accessed and modified in a controlled manner. Encapsulation also allows you to change the internal implementation of a class without affecting the code that uses it, providing flexibility and maintainability.
+
+Q7. Java is not considered a 100% Object-oriented Programming language because it supports primitive data types (e.g., int, double) which are not objects. In Java, there is a distinction between primitive types and objects. However, Java provides wrapper classes (e.g., Integer, Double) to wrap primitive types and treat them as objects when needed.
+
+Q8. The advantages of abstraction in Java are:
+
+Abstraction allows you to focus on essential details while hiding unnecessary complexity. It simplifies the design and implementation of complex systems.
+It provides a clear separation between the interface and implementation of a class, enabling better maintainability and flexibility.
+Abstraction helps in achieving modular and loosely coupled designs, making it easier to understand, test, and modify the code.
+It enhances code reusability by providing a blueprint for creating new classes based on existing abstractions.
+Abstraction promotes a higher level of understanding by creating a conceptual model of a system, hiding low-level implementation details.
+Q9. Abstraction is the process of representing essential features without including the background details or implementation. It allows you to create abstract classes and interfaces in Java.
+
+Here's an example of abstraction using an abstract class and an interface:
+
+// Abstract class representing a shape
+abstract class Shape {
+    abstract void draw();
+}
+
+// Concrete classes implementing the Shape abstract class
+class Circle extends Shape {
+    void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+
+class Rectangle extends Shape {
+    void draw() {
+        System.out.println("Drawing a rectangle");
+    }
+}
+
+// Interface representing a drawable object
+interface Drawable {
+    void draw();
+}
+
+// Class implementing the Drawable interface
+class Line implements Drawable {
+    public void draw() {
+        System.out.println("Drawing a line");
+    }
+}
+
+public class AbstractionExample {
+    public static void main(String[] args) {
+        Shape circle = new Circle();
+        Shape rectangle = new Rectangle();
+        circle.draw();      // Output: Drawing a circle
+        rectangle.draw();   // Output: Drawing a rectangle
+
+        Drawable line = new Line();
+        line.draw();        // Output: Drawing a line
+    }
+}
+
+Q10. In Java, a finalclass is a class that cannot be inherited by other classes. It means that you cannot create a subclass or extend a final class. Here's an example:
+
+final class FinalClass {
+    // Class implementation
+}
+
+// This will result in a compilation error
+class SubClass extends FinalClass {
+    // Class implementation
+}
+A final class is often used when you want to prevent further modification or extension of a class, typically for security, performance, or design reasons. It ensures that the behavior of the class cannot be changed by other classes. Additionally, methods within a final class can be marked as final, which means they cannot be overridden by subclasses.
+
