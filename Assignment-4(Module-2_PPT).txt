@@ -1,0 +1,139 @@
+Assignment-4(Module-2_PPT)
+
+Q1. Write a program to show an Interface Example in Java:
+
+// Define the interface
+interface Shape {
+    void draw();
+}
+
+// Implement the interface
+class Circle implements Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+
+class Rectangle implements Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing a rectangle");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape circle = new Circle();
+        circle.draw();
+
+        Shape rectangle = new Rectangle();
+        rectangle.draw();
+    }
+}
+Q2. Write a program with 2 concrete methods and 2 abstract methods in Java:
+
+abstract class Animal {
+    // Abstract methods
+    abstract void sound();
+    abstract void sleep();
+
+    // Concrete methods
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+
+    void roam() {
+        System.out.println("Animal is roaming");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+
+    @Override
+    void sleep() {
+        System.out.println("Dog is sleeping");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+
+    @Override
+    void sleep() {
+        System.out.println("Cat is sleeping");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        dog.sound();
+        dog.sleep();
+        dog.eat();
+        dog.roam();
+
+        Animal cat = new Cat();
+        cat.sound();
+        cat.sleep();
+        cat.eat();
+        cat.roam();
+    }
+}
+Q3. Write a program to show the use of a functional interface in Java:
+
+// Define a functional interface
+@FunctionalInterface
+interface Calculator {
+    int calculate(int a, int b);
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Use lambda expression to implement the functional interface
+        Calculator add = (a, b) -> a + b;
+        System.out.println("Addition: " + add.calculate(5, 3));
+
+        Calculator subtract = (a, b) -> a - b;
+        System.out.println("Subtraction: " + subtract.calculate(8, 2));
+
+        Calculator multiply = (a, b) -> a * b;
+        System.out.println("Multiplication: " + multiply.calculate(4, 6));
+    }
+}
+
+Q4. What is an interface in Java?
+An interface in Java is a blueprint of a class. It defines a set of methods that a class must implement if it implements that interface. It is a way to achieve abstraction and provide a contract for the classes that implement it. An interface can contain abstract methods, default methods, static methods, and constant variables.
+
+Q5. What is the use of an interface in Java?
+The use of an interface in Java is to achieve abstraction, provide a contract for classes, and define common behavior that can be implemented by multiple classes. It allows for multiple inheritance by implementing multiple interfaces. Interfaces are widely used in Java to create loosely coupled code, promote code reusability, and enable the implementation of different functionalities by different classes.
+
+Q6. What is the lambda expression of Java 8?
+Lambda expressions in Java 8 are a concise way to represent anonymous functions. They provide a way to pass behavior as a parameter to a method. Lambda expressions simplify the usage of functional interfaces by reducing the code required to implement them. Lambda expressions are characterized by the arrow token "->" and can be used to replace anonymous inner classes in many scenarios.
+
+Q7. Can you pass lambda expressions to a method? When?
+Yes, lambda expressions can be passed as parameters to methods. This is possible when the method's parameter type is a functional interface. Functional interfaces are interfaces that have only one abstract method. Since lambda expressions can be used to implement functional interfaces, they can be passed as arguments to methods expecting those interfaces. This allows for a more concise and expressive way to define behavior at the call site.
+
+Q8. What is a functional interface in Java 8?
+A functional interface in Java 8 is an interface that has only one abstract method. It is also known as a SAM (Single Abstract Method) type or a single-method interface. Functional interfaces are used in conjunction with lambda expressions and method references to provide a concise way of implementing behavior. The @FunctionalInterface annotation can be used to ensure that an interface is a functional interface, although it is not strictly required.
+
+Q9. What is the benefit of lambda expressions in Java 8?
+Lambda expressions in Java 8 provide several benefits, including:
+
+Conciseness: Lambda expressions allow you to write more compact and readable code by eliminating the need for anonymous inner classes in many cases.
+
+Readability: Lambda expressions make the code more expressive and self-explanatory by focusing on the behavior being passed rather than the boilerplate code.
+
+Flexibility: Lambda expressions enable the implementation of functional interfaces with inline code, making it easier to pass behavior as a parameter to methods.
+
+Enhanced Collections API: Lambda expressions are extensively used with the Stream API to perform powerful operations on collections, such as filtering, mapping, and reducing, in a more declarative and efficient manner.
+
+Q10. Is it mandatory for a lambda expression to have parameters?
+No, it is not mandatory for a lambda expression to have parameters. Lambda expressions can be parameterless or have one or more parameters, depending on the functional interface they are implementing. For example, a parameterless lambda expression can be used to implement a functional interface with a method that takes no arguments. However, if the functional interface specifies parameters, the lambda expression must match the parameter types and order defined by the interface's abstract method.
