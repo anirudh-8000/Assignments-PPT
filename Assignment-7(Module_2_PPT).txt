@@ -1,0 +1,113 @@
+Assignment-7(Module_2_PPT)
+
+Q1. What is the use of JDBC in Java?
+
+JDBC (Java Database Connectivity) is a Java API that allows Java programs to interact with databases. It provides a set of classes and interfaces that enable developers to access and manipulate relational databases. JDBC is used to perform various database operations such as connecting to a database, executing SQL queries, retrieving and updating data, and managing database transactions.
+
+Q2. What are the steps involved in JDBC?
+
+The steps involved in using JDBC are as follows:
+
+1. Import JDBC Packages: Import the necessary JDBC classes and interfaces using the `import` statement.
+
+2. Register the JDBC Driver: Load and register the appropriate JDBC driver for the database you want to connect to. This step is optional in Java SE 6 and above as the JDBC drivers are automatically loaded.
+
+3. Open a Connection: Establish a connection to the database using the `DriverManager.getConnection()` method by providing the database URL, username, and password.
+
+4. Create a Statement: Create an instance of the `Statement` interface or its subinterfaces (`PreparedStatement` or `CallableStatement`) to execute SQL queries or stored procedures.
+
+5. Execute SQL Queries: Use the statement object to execute SQL queries or updates using the `executeQuery()` or `executeUpdate()` methods.
+
+6. Process the Results: Retrieve the results of the query using the appropriate methods provided by the `ResultSet` interface.
+
+7. Close the Connection: Close the database connection using the `close()` method to release the resources and free up the connection.
+
+Q3. What are the types of statements in JDBC in Java?
+
+In JDBC, there are three types of statements:
+
+1. Statement: It is used to execute simple SQL statements without any parameters. The SQL statements are created as strings and executed using the `executeQuery()` or `executeUpdate()` methods of the `Statement` interface.
+
+2. PreparedStatement: It is used to execute parameterized SQL statements. It allows you to precompile and reuse the SQL statements with different parameters. The parameters are represented by placeholders in the SQL statement, and their values are set using the `setXXX()` methods provided by the `PreparedStatement` interface.
+
+3. CallableStatement: It is used to execute stored procedures in the database. It provides a way to call database stored procedures or functions. The stored procedure can have input parameters, output parameters, and a return value.
+
+Q4. What is a Servlet in Java?
+
+A Servlet is a Java class that is used to extend the capabilities of a server. It is a server-side component that receives and responds to client requests. Servlets are part of the Java EE (Enterprise Edition) platform and are used to create dynamic web applications.
+
+Servlets run on a web container (e.g., Apache Tomcat) and can handle various types of requests, such as HTTP GET, POST, PUT, DELETE, etc. They can generate dynamic content, interact with databases, manage sessions, and perform other server-side operations.
+
+Q5. Explain the life cycle of a servlet.
+
+The life cycle of a servlet consists of several stages:
+
+1. Initialization: When a servlet is first loaded or when the server starts, the `init()` method of the servlet is called. It is called only once during the lifecycle of the servlet. This method is used for any initialization tasks required by the servlet, such as loading configuration parameters or establishing database connections.
+
+2. Handling Requests: Once the servlet is initialized, it can handle incoming client requests. Each request is processed in a separate thread, and the servlet's `service()` method is called to handle the request. The `service()` method determines the type of request (GET, POST, etc.) and calls the appropriate method (`doGet()`, `doPost()`, etc.) to handle the request.
+
+3. Request Handling: Depending on the type of request, the servlet's corresponding method (`doGet()`, `doPost()`, etc.) is called. These methods contain the business logic to process the request, perform any necessary computations, interact with databases, and generate the response.
+
+4. Destroying: When the server is stopped or the servlet is no longer needed, the `destroy()` method of the servlet is called. This method allows the servlet to perform any cleanup tasks, such as closing database connections or releasing resources.
+
+Q6. Explain the difference between the RequestDispatcher.forward() and HttpServletResponse.sendRedirect() methods.
+
+The `RequestDispatcher.forward()` and `HttpServletResponse.sendRedirect()` methods are used for request forwarding and redirection in a servlet.
+
+1. `RequestDispatcher.forward()`: This method is used to forward the request from one servlet to another servlet, JSP page, or any other resource on the server. The forward is performed internally within the server, and the client is unaware of it. The original request and response objects are passed to the forwarded resource, allowing them to process the request further. The URL shown in the browser remains the same as the original request.
+
+2. `HttpServletResponse.sendRedirect()`: This method is used to redirect the client's browser to a different URL or resource. The server sends an HTTP redirect response (HTTP status code 302) to the client, indicating the new URL to be requested. The client's browser then makes a new request to the specified URL. The URL shown in the browser changes to the redirected URL.
+
+In summary, `forward()` performs an internal server-side forward without the client's knowledge, while `sendRedirect()` sends an HTTP redirect response to the client, instructing it to make a new request to the specified URL.
+
+Q7. What is the purpose of the `doGet()` and `doPost()` methods in a servlet?
+
+In a servlet, the `doGet()` and `doPost()` methods are used to handle HTTP GET and POST requests, respectively.
+
+1. `doGet(HttpServletRequest request, HttpServletResponse response)`: This method is called by the web container when an HTTP GET request is received for the servlet. It is responsible for processing the GET request, retrieving any necessary data from the request, performing any required operations, and generating the response. The servlet can access the request parameters, headers, and other information through the `HttpServletRequest` object and send the response back using the `HttpServletResponse` object.
+
+2. `doPost(HttpServletRequest request, HttpServletResponse response)`: This method is called by the web container when an HTTP POST request is received for the servlet. It is similar to the `doGet()` method but is specifically designed to handle POST requests. It allows the servlet to retrieve data sent in the request body (e.g., form data) and process it accordingly.
+
+By implementing these methods in a servlet, you can handle different types of requests and perform the necessary operations based on the request type (GET or POST).
+
+Q8. Explain the JSP Model-View-Controller (MVC) architecture.
+
+The JSP Model-View-Controller (MVC) architecture is a design pattern that separates the concerns of an application into three main components:
+
+1. Model: The model represents the application's data and business logic. It encapsulates the data and provides methods to manipulate and retrieve it. In the context of JSP, the model can be Java objects, JavaBeans, or data accessed from databases or other sources.
+
+2. View: The view is responsible for presenting the data to the user. In JSP, the view is typically represented by the JSP pages themselves. JSP pages contain HTML markup mixed with JSP tags and expressions to dynamically generate the content based on the data provided by the model.
+
+3. Controller: The controller manages the flow of the application and acts as an intermediary between the model and the view. It receives user input, processes it, interacts with the model to retrieve or update data, and determines the appropriate view to render. In JSP, the controller can be implemented using servlets or other components that handle the request processing and interact with the model and view.
+
+The MVC architecture promotes a separation of concerns, making the application more modular, maintainable, and scalable. It allows for easier modification of individual components without affecting others and supports code reuse and testability.
+
+Q9. What are some of the advantages of Servlets?
+
+Some advantages of using Servlets in Java web applications are:
+
+1. Platform Independence: Servlets are written in Java, which is platform-independent. They can run on any platform that supports Java, making the applications portable across different operating systems.
+
+2. Performance: Servlets are efficient in terms of performance as they are loaded and initialized only once during the lifetime of the web container. They can handle multiple requests concurrently and maintain the state of the application using session management techniques.
+
+3. Extensibility: Servlets provide a flexible and extensible framework for building web applications. They can be easily integrated with other Java technologies and frameworks like JSP, JDBC, and Java EE components.
+
+4. Security: Servlets support built-in security mechanisms for handling authentication, authorization, and data encryption. They can be integrated with Java EE security features to enforce access controls and protect sensitive information.
+
+5. Scalability: Servlet-based applications can be easily scaled by deploying them on multiple servers or using load balancers. Servlet containers provide features like clustering and session replication to support high availability and scalability.
+
+Q10. What are the limitations of JSP?
+
+Some limitations of using JSP (JavaServer Pages) are:
+
+1. Complexity: JSP pages can become complex and difficult to maintain when there is a mix of Java code and presentation logic embedded in the page. It may lead to a lack of separation of concerns and make the code harder to understand and debug.
+
+2. Performance Overhead: JSP pages need to be translated into servlets before execution, which introduces an overhead in terms of compilation and initialization. This overhead can affect the overall performance of the application, especially for small and simple pages.
+
+3. Limited Reusability: JSP pages tend to be tightly coupled with specific user interface elements and presentation logic. It can make it challenging to reuse the same JSP page in different contexts or to separate the presentation layer from the business logic.
+
+4. Limited Control: JSP pages provide limited control over the HTML markup that is generated. It may result in difficulties when trying to achieve fine-grained control over the output HTML or when integrating with complex client-side frameworks.
+
+5. Steep Learning Curve: JSP technology requires developers to have a good understanding of both Java and web development concepts. The learning curve for beginners can be steep, especially when dealing with more advanced features like custom tag libraries or JSP Standard Tag Library (JSTL).
+
+Despite these limitations, JSP remains a widely used technology for server-side web development, especially when combined with other Java technologies like servlets and frameworks like JavaServer Faces (JSF).
